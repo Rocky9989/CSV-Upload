@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const app = express();
 // const db = require('./config/mongoose');
@@ -16,22 +16,22 @@ app.use(expressLayouts);
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
-
 //setting view engine as ejs
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
 // ************************  Database Connection  **********************************//
-const {connectMonggose} = require('./config/mongoose')
+const { connectMonggose } = require('./config/mongoose');
 connectMonggose();
 
-
 //to create an duse sessions
-app.use(session({
-  secret: process.env.SECRET,
-  saveUninitialized: true,
-  resave: true
-}));
+app.use(
+  session({
+    secret: process.env.SECRET,
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
 //using connect-flash to display flash notification in FE
 app.use(flash());
@@ -42,7 +42,6 @@ app.use('/', require('./routes'));
 
 // ************************   Port Start   ********************************//
 const PORT = process.env.PORT || 8500;
-app.listen(PORT,()=>{
-    console.log(`My server start on this port ${PORT}`)
-})
-
+app.listen(PORT, () => {
+  console.log(`My server start on this port ${PORT}`);
+});
