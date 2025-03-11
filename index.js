@@ -21,15 +21,22 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 // ************************  Database Connection  **********************************//
-const { connectMonggose } = require('./config/mongoose');
-connectMonggose();
+const { connectMongoose } = require('./config/mongoose');
+connectMongoose();
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 //to create an duse sessions
+const store = new MongoDBStore({
+  uri: process.env.DATABASE_URL,
+  collection: 'sessions',
+});
+
 app.use(
   session({
     secret: process.env.SECRET,
-    saveUninitialized: true,
-    resave: true,
+    resave: false,
+    saveUninitialized: false,
+    store: store, // Use MongoDB store instead of MemoryStore
   })
 );
 

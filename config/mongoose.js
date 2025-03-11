@@ -1,11 +1,13 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-exports.connectMonggose = () => {
-  mongoose
-    .connect(process.env.DATABASE_URL, {
-      useNewUrlParser: true,
-    })
-    .then((e) => console.log('Connected to Mongodb =>> CSV Upload'))
-    .catch((e) => console.log('Not Connect Mongodb'));
+exports.connectMongoose = async () => {
+  try {
+    await mongoose.connect(process.env.DATABASE_URL);
+
+    console.log('✅ Connected to MongoDB => CSV Upload');
+  } catch (error) {
+    console.error('❌ MongoDB Connection Error:', error.message);
+    process.exit(1); // Stop the app if DB fails
+  }
 };
