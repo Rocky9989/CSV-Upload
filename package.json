@@ -1,0 +1,24 @@
+{
+  "name": "csv-upload-file-nodejs",
+  "version": "1.0.0",
+  "description": "CSV Upload File which built using Nodejs, Ejs , CSS , JavaScript.It is responsive across all devices.\r <br/>\r <br/>\r ## Features \r - User can upload any csv file into the system - using Multer JS\r - Display a list of all uploaded csv files - CSV is parsed and converted into JSON and stored in the Mongo Database\r - When the user selects a file, it displays all the data (with column headers) in a table on the page (front end)\r - There is a search box which searches on the front end itself and displays the matching rows of the table only (empty search box displays all the data).\r - There is a sorting button (ascending and descending) for each column on the front end\r - There is a validation on the front end and server side on being able to upload only csv type of files\r - There is a pagination of the data displayed in the table to a max of 100 records per page\r <br/>\r <br/>",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js -e js, ejs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.12.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.9",
+    "papaparse": "^5.5.2"
+  }
+}
